@@ -9,6 +9,7 @@ import {
   Alert,
 } from "react-native";
 
+import { router } from "expo-router";
 import { Video, ResizeMode } from "expo-av";
 import * as ImagePicker from "expo-image-picker";
 
@@ -17,7 +18,6 @@ import CustomButton from "../../components/CustomButton";
 import { useGlobalContext } from "../../context/GlobalProvider";
 
 import { icons } from "../../constants";
-import { router } from "expo-router";
 import { createVideoPost } from "../../lib/appwrite";
 
 const Create = () => {
@@ -65,7 +65,7 @@ const Create = () => {
     try {
       await createVideoPost({
         ...form,
-        user: user.$id,
+        userId: user.$id,
       });
 
       Alert.alert("Success", "Video uploaded successfully");
@@ -86,7 +86,7 @@ const Create = () => {
 
   return (
     <SafeAreaView className="bg-primary h-full">
-      <ScrollView className="px-4 my-6" showsVerticalScrollIndicator={false}>
+      <ScrollView className="px-4 my-6">
         <Text className="text-2xl font-psemibold text-white">Upload Video</Text>
 
         <FormField
@@ -163,7 +163,7 @@ const Create = () => {
         />
 
         <CustomButton
-          title="Submit & Published"
+          title="Submit & Publish"
           handlePress={submit}
           containerStyles="mt-7"
           isLoading={uploading}

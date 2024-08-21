@@ -4,7 +4,7 @@ import { icons } from "../constants";
 import { useState } from "react";
 import { ResizeMode, Video } from "expo-av";
 
-const VideoCard = ({ video: { title, creator, avatar, thumbnail, video } }) => {
+const VideoCard = ({ title, creator, avatar, thumbnail, video }) => {
   const [play, setPlay] = useState(false);
   const onVideo = React.useRef(null);
   return (

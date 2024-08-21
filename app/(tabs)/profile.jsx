@@ -30,7 +30,15 @@ const Profile = () => {
       <FlatList
         data={posts}
         keyExtractor={(item) => item.$id}
-        renderItem={({ item }) => <VideoCard video={item} />}
+        renderItem={({ item }) => (
+          <VideoCard
+            title={item.title}
+            thumbnail={item.thumbnail}
+            video={item.video}
+            creator={item.creator.username}
+            avatar={item.creator.avatar}
+          />
+        )}
         ListHeaderComponent={() => (
           <View className="w-full justify-center items-center mt-6 px-4">
             <TouchableOpacity
@@ -58,7 +66,7 @@ const Profile = () => {
               titleStyles="text-lg"
             />
 
-            <View className=" flex-row">
+            <View className="flex-row">
               <InfoBox
                 title={posts?.length || 0}
                 subtitle="Posts"
